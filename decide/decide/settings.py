@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'parler',
 
     'corsheaders',
     'django_filters',
@@ -75,6 +76,7 @@ BASEURL = 'http://localhost:8000'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -95,6 +97,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -150,6 +153,30 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('en-us', _('English')),
+    ('es', _('Español')),
+    ('fr',_('Francés'))
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en', },
+        {'code': 'es', },
+        {'code': 'fr', },
+    ),
+    'default': {
+        'fallback': 'es',
+        'hide_untranslated': True,
+    }
+}
+
+PARLER_DEFAULT_LANGUAGE = 'es'
+PARLER_SHOW_EXCLUDED_LANGUAGE_TABS = True
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
