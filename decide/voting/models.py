@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import JSONField
+from django.core.exceptions import ValidationError
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -10,6 +11,13 @@ from base.models import Auth, Key
 class Question(models.Model):
     desc = models.TextField()
 
+    voting_types = [
+        ('OQ', 'Optional Question'),
+        ('YN', 'Yes/No Question'),
+    ]
+    #Tipo por defecto OQ
+    types = models.CharField(max_length=10, choices=voting_types, default='OQ')
+
     def __str__(self):
         return self.desc
 
@@ -19,6 +27,11 @@ class QuestionOption(models.Model):
     number = models.PositiveIntegerField(blank=True, null=True)
     option = models.TextField()
 
+    def clean(self) -> None:
+        if self.question.types == 'YN':
+            if self.option not in ['Yes', 'No', 'Sí']:
+                raise ValidationError("This is a Yes/No question, option must be 'Yes', 'No' or 'Sí'.")
+            
     def save(self):
         if not self.number:
             self.number = self.question.options.count() + 2
