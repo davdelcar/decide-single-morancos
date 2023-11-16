@@ -38,10 +38,19 @@ class QuestionOption(models.Model):
                     raise ValidationError("This is a Yes/No question, you can't repeat the answer.")
     
     
-    def save(self):
-        if not self.number:
-            self.number = self.question.options.count() + 2
-        return super().save()
+    def save(self, *args, **kwargs):
+    # Save the QuestionOption first
+        super().save(*args, **kwargs)
+
+    # Then do the checks
+        if self.question.types == 'YN':
+            if self.option not in ['Yes', 'No']:
+                raise ValidationError("This is a Yes/No question, option must be 'Yes' or 'No'.")
+            if self.question.options.count() != 2:
+                raise ValidationError("This is a Yes/No question, only 2 options are allowed.")
+            if self.question.options.count() == 2:
+                if self.option in [option.option for option in self.question.options.all()]:
+                    raise ValidationError("This is a Yes/No question, you can't repeat the answer.")
 
     def __str__(self):
         return '{} ({})'.format(self.option, self.number)
