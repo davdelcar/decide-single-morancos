@@ -31,4 +31,4 @@ class BoothView(TemplateView):
         return context
     
     def index(request):
-        return render(request, "base/templates/base.html")
+        return render(request, "booth/booth.html")
