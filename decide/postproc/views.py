@@ -16,6 +16,7 @@ class PostProcView(APIView):
         out.sort(key=lambda x: -x['postproc'])
         return Response(out)
 
+
     def post(self, request):
         """
          * type: IDENTITY | EQUALITY | WEIGHT
@@ -32,7 +33,10 @@ class PostProcView(APIView):
         t = request.data.get('type', 'IDENTITY')
         opts = request.data.get('options', [])
 
+
+
         if t == 'IDENTITY':
             return self.identity(opts)
 
         return Response({})
+
