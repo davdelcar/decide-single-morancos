@@ -15,11 +15,18 @@ class Question(models.Model):
         ('OQ', 'Optional Question'),
         ('YN', 'Yes/No Question'),
     ]
-    #Tipo por defecto OQ
-    types = models.CharField(max_length=10, choices=voting_types, default='OQ')
+
+    types = models.CharField(max_length=2,
+        choices=voting_types,
+        default='YN',)
 
     def __str__(self):
         return self.desc
+    
+    def save(self, *args, **kwargs):
+        if self.voting_types == 'YN':
+            self.options = ['Yes', 'No']
+        super().save(*args, **kwargs)
 
 
 class QuestionOption(models.Model):
@@ -30,18 +37,16 @@ class QuestionOption(models.Model):
     def clean(self) -> None:
         if self.question.types == 'YN':
             if self.option not in ['Yes', 'No']:
-                raise ValidationError("This is a Yes/No question, option must be 'Yes', 'No' or 'Sí'.")
+                raise ValidationError("This is a Yes/No question, option must be 'Yes' or 'No'.")
+            if QuestionOption.objects.filter(question=self.question, option=self.option).exists():
+                raise ValidationError("This option already exists for this question.")
             
-    
-    
+            
     def save(self):
+        if QuestionOption.objects.filter(question=self.question, option=self.option).exists():
+                raise ValidationError("This option already exists for this question.")
         if not self.number:
             self.number = self.question.options.count() + 2
-        if self.question.options.count() != 2:
-                raise ValidationError("This is a Yes/No question, only 2 options are allowed.")
-        if self.question.options.count() == 2:
-             if self.option in self.question.options.all():
-                raise ValidationError("This is a Yes/No question, you can't repeat the answer.")
         return super().save()
 
     def __str__(self):
