@@ -31,7 +31,10 @@ class QuestionOption(models.Model):
         if self.question.types == 'YN':
             if self.option not in ['Yes', 'No', 'Sí']:
                 raise ValidationError("This is a Yes/No question, option must be 'Yes', 'No' or 'Sí'.")
-            
+            if self.option.count!=2:
+                raise ValidationError("This is a Yes/No question, must be 2 options.")
+    
+    
     def save(self):
         if not self.number:
             self.number = self.question.options.count() + 2
