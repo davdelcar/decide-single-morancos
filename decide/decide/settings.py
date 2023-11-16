@@ -104,7 +104,6 @@ TEMPLATES = [
 
             ],
         },
-        
     },
 ]
 
@@ -151,7 +150,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGES = [
     ('en-us', _('English')),
     ('es', _('Spanish')),
-    ('fr', _('French')),
 ]
 LANGUAGE_CODE = 'en-us'
 
