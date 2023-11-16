@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   buildTest:
-    uses: <tu org>/<tu repo>/.github/workflows/django.yml@master
+    uses: davdelcar/decide-single-morancos/.github/workflows/django.yml@master
     secrets: 
       CODACY_PROJECT_TOKEN: ${{secrets.CODACY_PROJECT_TOKEN}}
      
