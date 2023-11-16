@@ -3,7 +3,6 @@ from django.db.models import JSONField
 from django.core.exceptions import ValidationError
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.core.exceptions import ValidationError
 
 from base import mods
 from base.models import Auth, Key
@@ -49,9 +48,6 @@ class QuestionOption(models.Model):
         if not self.number:
             self.number = self.question.options.count() + 2
         return super().save()
-
-    def __str__(self):
-        return '{} ({})'.format(self.option, self.number)
 
     def __str__(self):
         return '{} ({})'.format(self.option, self.number)
