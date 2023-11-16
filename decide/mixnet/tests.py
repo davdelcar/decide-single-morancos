@@ -9,7 +9,8 @@ from mixnet.mixcrypt import ElGamal
 from base import mods
 
 
-'''class MixnetCase(APITestCase):
+'''
+class MixnetCase(APITestCase):
 
     def setUp(self):
         self.client = APIClient()
@@ -102,8 +103,9 @@ from base import mods
 
         self.assertEqual(sorted(clear), sorted(clear2))
 
-    def test_multiple_auths(self):'''
-        '''
+    def test_multiple_auths(self):
+'''
+'''
         This test emulates a two authorities shuffle and decryption.
 
         We create two votings, one with id 1 and another one with id 2, to
@@ -159,7 +161,7 @@ from base import mods
         self.assertEqual(sorted(clear), sorted(clear2))
 
     def test_multiple_auths_mock(self):'''
-        '''
+'''
         This test emulates a two authorities shuffle and decryption.
         '''
 '''
@@ -187,4 +189,5 @@ from base import mods
         clear1 = response.json()
 
         self.assertNotEqual(clear, clear1)
-        self.assertEqual(sorted(clear), sorted(clear1))''''''
+        self.assertEqual(sorted(clear), sorted(clear1))'''
+
