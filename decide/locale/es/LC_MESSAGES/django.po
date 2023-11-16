@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-15 17:24+0000\n"
+"POT-Creation-Date: 2023-11-16 09:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,44 +18,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: booth/templates/booth/booth.html:24
+#: base/templates/change_language.html:2
+msgid "Change language"
+msgstr "Cambiar idioma"
+
+#: booth/templates/booth/booth.html:25
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: booth/templates/booth/booth.html:75
-msgid "You must log in to access voting!"
-msgstr "¡Debes iniciar sesión para acceder a la votación!"
-
-#: booth/templates/booth/booth.html:84 booth/templates/booth/booth.html:110
+#: booth/templates/booth/booth.html:30 booth/templates/booth/booth.html:85
+#: booth/templates/booth/booth.html:111
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: booth/templates/booth/booth.html:91
+#: booth/templates/booth/booth.html:76
+msgid "You must log in to access voting!"
+msgstr "¡Debes iniciar sesión para acceder a la votación!"
+
+#: booth/templates/booth/booth.html:92
 msgid "Username"
 msgstr "Usuario"
 
-#: booth/templates/booth/booth.html:101
+#: booth/templates/booth/booth.html:102
 msgid "Password"
 msgstr "Contraseña"
 
-#: booth/templates/booth/booth.html:132
+#: booth/templates/booth/booth.html:133
 msgid "Vote"
 msgstr "Votar"
 
-#: booth/templates/booth/booth.html:235 booth/templates/booth/booth.html:246
-#: booth/templates/booth/booth.html:282
+#: booth/templates/booth/booth.html:236 booth/templates/booth/booth.html:247
+#: booth/templates/booth/booth.html:283
 msgid "Error: "
 msgstr "Error: "
 
-#: booth/templates/booth/booth.html:278
+#: booth/templates/booth/booth.html:279
 msgid "Congratulations. Your vote has been sent"
 msgstr "Felicidades. Tu voto ha sido enviado."
 
-#: decide/settings.py:149
+#: decide/settings.py:151
 msgid "English"
 msgstr "Inglés"
 
-#: decide/settings.py:150
+#: decide/settings.py:152
 msgid "Spanish"
 msgstr "Español"
 
