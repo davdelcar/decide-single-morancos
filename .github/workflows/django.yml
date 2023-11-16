@@ -2,15 +2,19 @@ name: Python application
 
 on:
   push:
-    branches:
-      - develop
-      - master
+     branches:
+      - master	 
+      - develop  
+  workflow_call:
+    secrets:
+      CODACY_PROJECT_TOKEN:
+        required: true
 
 jobs:
   build:
     strategy:
       matrix:
-        pyversion: ['3.8','3.9']
+        pyversion: ['3.10.12','3.11']
 
     runs-on: ubuntu-latest
 
