@@ -32,7 +32,7 @@ class QuestionOption(models.Model):
             if self.option not in ['Yes', 'No']:
                 raise ValidationError("This is a Yes/No question, option must be 'Yes', 'No' or 'Sí'.")
             if self.question.options.count() != 2:
-                raise ValidationError("This is a Yes/No question, only 2 options are allowed.")0
+                raise ValidationError("This is a Yes/No question, only 2 options are allowed.")
             if self.question.options.count() == 2:
                 if self.option in self.question.options.all():
                     raise ValidationError("This is a Yes/No question, you can't repeat the answer.")
