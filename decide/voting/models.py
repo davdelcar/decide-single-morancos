@@ -31,16 +31,17 @@ class QuestionOption(models.Model):
         if self.question.types == 'YN':
             if self.option not in ['Yes', 'No']:
                 raise ValidationError("This is a Yes/No question, option must be 'Yes', 'No' or 'Sí'.")
-            if self.question.options.count() != 2:
-                raise ValidationError("This is a Yes/No question, only 2 options are allowed.")
-            if self.question.options.count() == 2:
-                if self.option in self.question.options.all():
-                    raise ValidationError("This is a Yes/No question, you can't repeat the answer.")
+            
     
     
     def save(self):
         if not self.number:
             self.number = self.question.options.count() + 2
+        if self.question.options.count() != 2:
+                raise ValidationError("This is a Yes/No question, only 2 options are allowed.")
+        if self.question.options.count() == 2:
+             if self.option in self.question.options.all():
+                raise ValidationError("This is a Yes/No question, you can't repeat the answer.")
         return super().save()
 
     def __str__(self):
