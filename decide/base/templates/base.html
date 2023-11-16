@@ -1,0 +1,30 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}Decide!{% endblock %}</title>
+        {% block extrahead %}
+        <h1>Prueba</h1>
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+            <h1>Prueba</h1>      
+            <div id="container">
+                <div id="header">
+                    
+                    <div id="user-tools">
+                            {% include 'change_language.html' %}
+                    </div>
+                    
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block extrabody %}{% endblock %}
+        
+    </body>
+
+   
+</html>
