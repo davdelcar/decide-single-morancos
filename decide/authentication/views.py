@@ -33,6 +33,7 @@ class LogoutView(APIView):
         return Response({})
 
 
+
 class RegisterView(APIView):
     def post(self, request):
         key = request.data.get('token', '')
